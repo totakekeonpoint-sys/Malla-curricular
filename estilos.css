@@ -1,1 +1,174 @@
+/* Variables CSS para los colores */
+:root {
+    --matcha-green: #9DC183;
+    --beige: #F5F5DC;
+    --light-brown: #D2B48C;
+    --light-yellow: #FFFACD;
+    --dark-green: #5F7C5E;
+    --text-color: #333;
+    --border-color: #A9B79B;
+}
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-yellow); /* Fondo general en amarillo muy claro */
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--beige); /* Contenedor principal en beige */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 1200px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid var(--border-color);
+}
+
+h1 {
+    color: var(--dark-green); /* Título en verde oscuro */
+    margin-bottom: 30px;
+    font-family: 'Lora', serif;
+    font-size: 2.5em;
+}
+
+.curriculum-grid {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los semestres se envuelvan en pantallas pequeñas */
+    gap: 20px;
+    justify-content: center;
+}
+
+.semester {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1; /* Permite que los semestres ocupen el espacio disponible */
+    min-width: 280px; /* Ancho mínimo para cada columna de semestre */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.semester h2 {
+    color: var(--matcha-green); /* Título de semestre en verde matcha */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: 'Lora', serif;
+    font-size: 1.8em;
+}
+
+.course-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.course-item {
+    background-color: var(--light-yellow); /* Fondo de cada ramo en amarillo muy claro */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.course-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.course-item.approved {
+    background-color: var(--matcha-green); /* Ramo aprobado en verde matcha */
+    color: #fff;
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.course-item.blocked {
+    background-color: var(--light-brown); /* Ramo bloqueado en café claro */
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Mensaje de notificación */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--dark-green);
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+/* Mensaje motivacional */
+.motivation-message {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--light-brown);
+    color: #fff;
+    border-radius: 10px;
+    font-family: 'Lora', serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    display: none; /* Se mostrará con JavaScript */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .curriculum-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .semester {
+        min-width: unset;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .semester h2 {
+        font-size: 1.5em;
+    }
+
+    .course-item {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+
+    .motivation-message {
+        font-size: 1.2em;
+    }
+}
